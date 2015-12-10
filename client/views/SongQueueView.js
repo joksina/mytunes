@@ -2,8 +2,12 @@
 var SongQueueView = Backbone.View.extend({
 
  tagName: "table",
+ className: 'song-queues',
 
   initialize: function() {
+    this.collection.on('add remove', function(model){
+      this.render();
+    }, this);
     this.render();
   },
 
@@ -16,9 +20,10 @@ var SongQueueView = Backbone.View.extend({
       this.collection.map(function(song) {
             // console.log('song ', song);
 
-        return new LibraryEntryView({model: song}).render();
+        return new SongQueueEntryView({model: song}).render();
       })
     );
+  
   }
 
 });
