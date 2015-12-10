@@ -12,6 +12,9 @@ var SongModel = Backbone.Model.extend({
     this.trigger('dequeue', this);
   },
   ended: function() {
+    this.trigger()
+    localStorage.setItem(this.get('title'), + localStorage.getItem(this.get('title')) + 1);
+      this.set('playCount', localStorage.getItem(this.get('title')));
     this.trigger('ended', this);
 
   }
