@@ -2,6 +2,7 @@
 var LibraryEntryView = Backbone.View.extend({
 
   tagName: 'tr',
+  className: 'lib_entry',
 
   template: _.template('<td>(<%= artist %>)</td><td><%= title %></td>'),
 

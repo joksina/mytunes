@@ -2,6 +2,7 @@
 var LibraryView = Backbone.View.extend({
 
   tagName: "table",
+  className: '.lib',
 
   initialize: function() {
     this.render();
@@ -14,7 +15,7 @@ var LibraryView = Backbone.View.extend({
     // alternate ==> this.$el.children().remove();
 
 
-    this.$el.html('<th>Library</th>').append(
+    this.$el.html('<th class="list_title">Library</th>').append(
     // alternate ==> this.$el.append( function() { return '<th>Library</th> ' } ).append(
       this.collection.map(function(song) {
             //console.log('song ', song);

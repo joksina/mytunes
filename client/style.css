@@ -1,0 +1,17 @@
+body {
+    background-image: url("background.jpg");
+    color: #fff;
+}
+
+.list_title {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.lib_entry {
+}
+
+
+.lib_queue {
+  background-color: #999;
+}
