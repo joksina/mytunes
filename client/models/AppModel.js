@@ -14,14 +14,43 @@ var AppModel = Backbone.Model.extend({
     // this.set(library)
 
 
+    // if localstorage !null
+      // each(localstorage.songqueue, function(song) {
+        // this.get('songQueue').add(song);
+      // })
+    var addLocalSto = function(song) {
+      var localArr = [];
+      if (localStorage.songQ) {
+        localArr = JSON.parse(localStorage.songQ);
+      }
+      localArr.push(song);
+      localStorage.songQ = JSON.stringify(localArr);
+    };
+
+    var removeLocalSto = function(song, that) {
+      var songIndex = that.get('songQueue').indexOf(song);
+      console.log('i: ', songIndex);
+
+      var localArr = JSON.parse(localStorage.songQ)
+      console.log('locQ1: ', localArr);
+
+      localArr.splice(songIndex, 1);
+      localStorage.songQ = JSON.stringify(localArr);
+      console.log('locQ2: ', localArr);
+      return song;
+    }
+
     params.library.on('play', function(song) {
       this.set('currentSong', song);
     }, this);
     params.library.on('enqueue', function(song) {
+      addLocalSto(song);
+      // console.log('lsto en: ', localStorage.songQ);
       this.get('songQueue').add(song);
     }, this);
     params.library.on('dequeue', function(song) {
-        this.get('songQueue').remove(song);
+      removeLocalSto(song, this);
+      this.get('songQueue').remove(song);
       }, this);
     this.get('songQueue').on('stop', function(song) {
       this.set('currentSong', null);
