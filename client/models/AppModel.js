@@ -12,12 +12,6 @@ var AppModel = Backbone.Model.extend({
     getting called from the window (unless we override it, as we do here). */
 
     // this.set(library)
-
-
-    // if localstorage !null
-      // each(localstorage.songqueue, function(song) {
-        // this.get('songQueue').add(song);
-      // })
     var addLocalSto = function(song) {
       var localArr = [];
       if (localStorage.songQ) {
@@ -28,10 +22,10 @@ var AppModel = Backbone.Model.extend({
     };
 
     var removeLocalSto = function(song, that) {
-      var songIndex = that.get('songQueue').indexOf(song);
-      console.log('i: ', songIndex);
-
-      var localArr = JSON.parse(localStorage.songQ)
+      // var songIndex = that.get('songQueue').indexOf(song);
+      var localArr = [];
+      localArr = JSON.parse(localStorage.songQ);
+      var songIndex = localArr.indexOf(song)
       console.log('locQ1: ', localArr);
 
       localArr.splice(songIndex, 1);
